@@ -29,7 +29,7 @@
 
 AnimatedText::AnimatedText()
 {
-    m_cachedText.setFont(g_fonts.getFont("newfont-16px-roundedd"));
+    m_cachedText.setFont(g_fonts.getFont("minha_fonte"));
     m_cachedText.setAlign(Fw::AlignLeft);
 }
 
@@ -41,7 +41,7 @@ void AnimatedText::drawText(const Point& dest, const Rect& visibleRect)
     Point p = dest;
     Size textSize = m_cachedText.getTextSize();
     float t = m_animationTimer.ticksElapsed();
-    p.x -= textSize.width() / 2;
+    p.x -= textSize.width() / 1.5;
 
     if(g_game.getFeature(Otc::GameDiagonalAnimatedText)) {
         p.x -= (4 * t / tf) + (8 * t * t / tftf);
@@ -93,7 +93,7 @@ bool AnimatedText::merge(const AnimatedTextPtr& other)
     if(other->getCachedText().getFont() != m_cachedText.getFont())
         return false;
 
-    if(m_animationTimer.ticksElapsed() > Otc::ANIMATED_TEXT_DURATION / 2.5)
+    if(m_animationTimer.ticksElapsed() > Otc::ANIMATED_TEXT_DURATION / 3.5)
         return false;
 
     try {
