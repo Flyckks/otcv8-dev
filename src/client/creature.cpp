@@ -91,12 +91,22 @@ void Creature::draw(const Point& dest, bool animate, LightView* lightView)
 
     Point animationOffset = animate ? m_walkOffset : Point(0, 0);
 
-    if (m_showTimedSquare && animate) {
-        g_drawQueue->addBoundingRect(Rect(dest - jumpOffset + (animationOffset - getDisplacement() + 2 * g_sprites.getOffsetFactor()), Size(sprSize - 4 * g_sprites.getOffsetFactor(), sprSize - 4 * g_sprites.getOffsetFactor())), 2 * g_sprites.getOffsetFactor(), m_timedSquareColor);
+    if(m_showTimedSquare && animate) {
+        EffectPtr effect = EffectPtr(new Effect());
+        effect->setId(172);
+        g_painter->setColor(m_timedSquareColor);
+        Rect rect = Rect(dest + (animationOffset - getDisplacement())*scaleFactor, Size(Otc::TILE_PIXELS, Otc::TILE_PIXELS)*scaleFactor);
+        g_painter->drawTexturedRect(rect, effect->getThingType()->getTexture(0));
+        g_painter->setColor(Color::white);
     }
 
-    if (m_showStaticSquare && animate) {
-        g_drawQueue->addBoundingRect(Rect(dest - jumpOffset + (animationOffset - getDisplacement()), Size(sprSize, sprSize)), 2 * g_sprites.getOffsetFactor(), m_staticSquareColor);
+    if(m_showStaticSquare && animate) {
+        EffectPtr effect = EffectPtr(new Effect());
+        effect->setId(172);
+        g_painter->setColor(m_staticSquareColor);
+        Rect rect = Rect(dest + (animationOffset - getDisplacement())*scaleFactor, Size(Otc::TILE_PIXELS, Otc::TILE_PIXELS)*scaleFactor);
+        g_painter->drawTexturedRect(rect, effect->getThingType()->getTexture(0));
+        g_painter->setColor(Color::white);
     }
 
     if (m_outfit.getCategory() != ThingCategoryCreature)
