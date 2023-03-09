@@ -487,12 +487,6 @@ void ThingType::unserializeOtml(const OTMLNodePtr& node)
             else
                 m_attribs.remove(ThingAttrFullGround);
         }
-		else if (node2->tag() == "drawUnderCreatureEffect") {
-            if (node2->value<bool>())
-                m_drawundercreatureeffect = 1;
-            else
-                m_drawundercreatureeffect = 0;
-        }
     }
 }
 
