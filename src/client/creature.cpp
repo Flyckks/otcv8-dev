@@ -150,7 +150,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
         fillColor = m_informationColor;
 
     // calculate main rects - hp/mana
-    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (13.5), point.y + m_informationOffset.y, 54, 9);
+    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (28), point.y + m_informationOffset.y, 54, 8);
     backgroundRect.bind(parentRect);
 
     //debug            
