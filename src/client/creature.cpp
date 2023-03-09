@@ -206,7 +206,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 
     if (drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
         if (healthBar) {
-            TexturePtr barTexture = healthBar->getTexture("/images/game/hp");
+            TexturePtr barTexture = healthBar->getTexture();
             Rect barRect = Rect(backgroundRect.x() + healthBar->getOffset().x, backgroundRect.y() + healthBar->getOffset().y, barTexture->getSize());
             g_drawQueue->addTexturedRect(barRect, barTexture, Rect(0, 0, barTexture->getSize()));
         }
@@ -239,7 +239,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
                     backgroundRect.moveTop(backgroundRect.top() + manaBar->getBarOffset().y);
                     backgroundRect.moveLeft(backgroundRect.left() + manaBar->getBarOffset().x);
 
-                    TexturePtr barTexture = manaBar->getTexture("/images/game/mp");
+                    TexturePtr barTexture = manaBar->getTexture();
                     Rect barRect = Rect(backgroundRect.x() + manaBar->getOffset().x, backgroundRect.y() + manaBar->getOffset().y, barTexture->getSize());
                     g_drawQueue->addTexturedRect(barRect, barTexture, Rect(0, 0, barTexture->getSize()));
                 }
