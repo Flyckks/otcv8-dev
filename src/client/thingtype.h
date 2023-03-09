@@ -189,8 +189,7 @@ public:
     uint16 getId() { return m_id; }
     ThingCategory getCategory() { return m_category; }
     bool isNull() { return m_null; }
-    bool hasAttr(ThingAttr attr) { return m_attribs.has(attr); }    
-    bool m_drawundercreatureeffect;
+    bool hasAttr(ThingAttr attr) { return m_attribs.has(attr); }  
     bool isLoaded() { return m_loaded; }
     ticks_t getLastUsage() { return m_lastUsage; }
 
@@ -259,7 +258,6 @@ public:
     bool isUnwrapable() { return m_attribs.has(ThingAttrUnwrapable); }
     bool isTopEffect() { return m_attribs.has(ThingAttrTopEffect); }
     bool hasBones() { return m_attribs.has(ThingAttrBones); }
-    bool drawUnderCreatureEffect() { return m_drawundercreatureeffect; }
 
     std::vector<int> getSprites() { return m_spritesIndex; }
 
