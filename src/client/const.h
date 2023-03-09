@@ -70,8 +70,9 @@ namespace Otc
         DrawManaBar = 32768,
         DontDrawLocalPlayer = 65536,
         DrawIcons = 131072,
+        DrawUnderEffects = 65536,
         DrawWalls = DrawOnBottom | DrawOnTop,
-        DrawEverything = DrawGround | DrawGroundBorders | DrawWalls | DrawItems |
+        DrawEverything = DrawGround | DrawGroundBorders | DrawUnderEffects | DrawWalls | DrawItems |
                          DrawCreatures | DrawEffects | DrawMissiles | DrawCreaturesInformation |
                          DrawStaticTexts | DrawAnimatedTexts | DrawAnimations | DrawBars | DrawNames |
                          DrawLights | DrawManaBar | DrawIcons
