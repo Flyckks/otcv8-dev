@@ -150,7 +150,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
         fillColor = m_informationColor;
 
     // calculate main rects - hp/mana
-    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (13.5), point.y + m_informationOffset.y, 27, 4);
+    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (13.5), point.y + m_informationOffset.y, 54, 9);
     backgroundRect.bind(parentRect);
 
     //debug            
@@ -206,7 +206,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
 
     if (drawFlags & Otc::DrawBars && (!isNpc() || !g_game.getFeature(Otc::GameHideNpcNames))) {
         if (healthBar) {
-            TexturePtr barTexture = healthBar->getTexture();
+            TexturePtr barTexture = healthBar->getTexture("/images/game/hp");
             Rect barRect = Rect(backgroundRect.x() + healthBar->getOffset().x, backgroundRect.y() + healthBar->getOffset().y, barTexture->getSize());
             g_drawQueue->addTexturedRect(barRect, barTexture, Rect(0, 0, barTexture->getSize()));
         }
@@ -239,7 +239,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
                     backgroundRect.moveTop(backgroundRect.top() + manaBar->getBarOffset().y);
                     backgroundRect.moveLeft(backgroundRect.left() + manaBar->getBarOffset().x);
 
-                    TexturePtr barTexture = manaBar->getTexture();
+                    TexturePtr barTexture = manaBar->getTexture("/images/game/mp");
                     Rect barRect = Rect(backgroundRect.x() + manaBar->getOffset().x, backgroundRect.y() + manaBar->getOffset().y, barTexture->getSize());
                     g_drawQueue->addTexturedRect(barRect, barTexture, Rect(0, 0, barTexture->getSize()));
                 }
