@@ -37,9 +37,9 @@ namespace Otc
 
         INVISIBLE_TICKS_PER_FRAME = 500,
         INVISIBLE_TICKS_PER_FRAME_FAST = 100,
-        ITEM_TICKS_PER_FRAME = 500,
+        ITEM_TICKS_PER_FRAME = 100,
         ITEM_TICKS_PER_FRAME_FAST = 100,
-        ANIMATED_TEXT_DURATION = 1000,
+        ANIMATED_TEXT_DURATION = 1500,
         STATIC_DURATION_PER_CHARACTER = 60,
         MIN_STATIC_TEXT_DURATION = 3000,
         MAX_STATIC_TEXT_WIDTH = 200,
@@ -70,8 +70,9 @@ namespace Otc
         DrawManaBar = 32768,
         DontDrawLocalPlayer = 65536,
         DrawIcons = 131072,
+        DrawUnderEffects = 65536,
         DrawWalls = DrawOnBottom | DrawOnTop,
-        DrawEverything = DrawGround | DrawGroundBorders | DrawWalls | DrawItems |
+        DrawEverything = DrawGround | DrawGroundBorders | DrawUnderEffects | DrawWalls | DrawItems |
                          DrawCreatures | DrawEffects | DrawMissiles | DrawCreaturesInformation |
                          DrawStaticTexts | DrawAnimatedTexts | DrawAnimations | DrawBars | DrawNames |
                          DrawLights | DrawManaBar | DrawIcons

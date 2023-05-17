@@ -31,7 +31,7 @@
 class Missile : public Thing
 {
     enum {
-        TICKS_PER_FRAME = 75
+        TICKS_PER_FRAME = 200
     };
 
 public:

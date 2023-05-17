@@ -92,10 +92,14 @@ void Creature::draw(const Point& dest, bool animate, LightView* lightView)
     Point animationOffset = animate ? m_walkOffset : Point(0, 0);
 
     if (m_showTimedSquare && animate) {
-        g_drawQueue->addBoundingRect(Rect(dest - jumpOffset + (animationOffset - getDisplacement() + 2 * g_sprites.getOffsetFactor()), Size(sprSize - 4 * g_sprites.getOffsetFactor(), sprSize - 4 * g_sprites.getOffsetFactor())), 2 * g_sprites.getOffsetFactor(), m_timedSquareColor);
+	EffectPtr effect = EffectPtr(new Effect());
+        effect->setId(172);
+        g_drawQueue->addBoundingRect(Rect(dest - jumpOffset + (animationOffset - getDisplacement() + 2 * g_sprites.getOffsetFactor()), Size(sprSize - 4 * g_sprites.getOffsetFactor(), sprSize - 4 * g_sprites.getOffsetFactor())), 2 * g_sprites.getOffsetFactor(), m_timedSquareColor);;
     }
 
     if (m_showStaticSquare && animate) {
+	EffectPtr effect = EffectPtr(new Effect());
+        effect->setId(172);
         g_drawQueue->addBoundingRect(Rect(dest - jumpOffset + (animationOffset - getDisplacement()), Size(sprSize, sprSize)), 2 * g_sprites.getOffsetFactor(), m_staticSquareColor);
     }
 
@@ -146,7 +150,7 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
         fillColor = m_informationColor;
 
     // calculate main rects - hp/mana
-    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (13.5), point.y + m_informationOffset.y, 27, 4);
+    Rect backgroundRect = Rect(point.x + m_informationOffset.x - (13.5), point.y + m_informationOffset.y, 27, 8);
     backgroundRect.bind(parentRect);
 
     //debug            
@@ -282,23 +286,23 @@ void Creature::drawInformation(const Point& point, bool useGray, const Rect& par
         return;
 
     if (m_skull != Otc::SkullNone && m_skullTexture) {
-        Rect skullRect = Rect(backgroundRect.x() + 13.5 + 12, backgroundRect.y() + 5, m_skullTexture->getSize());
+        Rect skullRect = Rect(backgroundRect.x() + 27 + 24, backgroundRect.y() + 10, m_skullTexture->getSize());
         g_drawQueue->addTexturedRect(skullRect, m_skullTexture, Rect(0, 0, m_skullTexture->getSize()));
     }
     if (m_shield != Otc::ShieldNone && m_shieldTexture && m_showShieldTexture) {
-        Rect shieldRect = Rect(backgroundRect.x() + 13.5, backgroundRect.y() + 5, m_shieldTexture->getSize());
+        Rect shieldRect = Rect(backgroundRect.x() + 27, backgroundRect.y() + 10, m_shieldTexture->getSize());
         g_drawQueue->addTexturedRect(shieldRect, m_shieldTexture, Rect(0, 0, m_shieldTexture->getSize()));
     }
     if (m_emblem != Otc::EmblemNone && m_emblemTexture) {
-        Rect emblemRect = Rect(backgroundRect.x() + 13.5 + 12, backgroundRect.y() + 16, m_emblemTexture->getSize());
+        Rect emblemRect = Rect(backgroundRect.x() + 27 + 24, backgroundRect.y() + 32, m_emblemTexture->getSize());
         g_drawQueue->addTexturedRect(emblemRect, m_emblemTexture, Rect(0, 0, m_emblemTexture->getSize()));
     }
     if (m_type != Proto::CreatureTypeUnknown && m_typeTexture) {
-        Rect typeRect = Rect(backgroundRect.x() + 13.5 + 12 + 12, backgroundRect.y() + 16, m_typeTexture->getSize());
+        Rect typeRect = Rect(backgroundRect.x() + 28 + 24 + 24, backgroundRect.y() + 32, m_typeTexture->getSize());
         g_drawQueue->addTexturedRect(typeRect, m_typeTexture, Rect(0, 0, m_typeTexture->getSize()));
     }
     if (m_icon != Otc::NpcIconNone && m_iconTexture) {
-        Rect iconRect = Rect(backgroundRect.x() + 13.5 + 12, backgroundRect.y() + 5, m_iconTexture->getSize());
+        Rect iconRect = Rect(backgroundRect.x() + 27 + 24, backgroundRect.y() + 10, m_iconTexture->getSize());
         g_drawQueue->addTexturedRect(iconRect, m_iconTexture, Rect(0, 0, m_iconTexture->getSize()));
     }
 }

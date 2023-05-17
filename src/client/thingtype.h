@@ -189,7 +189,7 @@ public:
     uint16 getId() { return m_id; }
     ThingCategory getCategory() { return m_category; }
     bool isNull() { return m_null; }
-    bool hasAttr(ThingAttr attr) { return m_attribs.has(attr); }
+    bool hasAttr(ThingAttr attr) { return m_attribs.has(attr); }  
     bool isLoaded() { return m_loaded; }
     ticks_t getLastUsage() { return m_lastUsage; }
 
